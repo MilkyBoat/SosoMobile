@@ -1,2 +1,3 @@
-# SosoMobie
- 一个模拟电信公司的小型java家庭作业性质项目
+# 移动营业大厅
+
+### JavaDoc文档：<a href='./doc/index.html'>链接</a>
