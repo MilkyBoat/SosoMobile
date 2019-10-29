@@ -1,47 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="151e2435-3717-4b5c-8905-c129f472a333" name="默认的" comment="" />
+    <list default="true" id="8b44a7d7-498c-45c7-a9f0-b3a2f746e496" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/surface.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java实验报告.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java实验报告.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SosoMobie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SosoMobie.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/CallService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/CardUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/ConsumInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/InsufficientBalanceException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/Main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/MobileCard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/NetPackage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/NetService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/Scene.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/SendService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/ServicePackage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/SuperPackage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/TalkPackage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/com/sosoMobie/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/external/jquery/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-bg_flat_75_ffffff_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-bg_glass_65_ffffff_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jquery-3.3.1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jquery-migrate-3.0.1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jquery-ui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jquery-ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jquery-ui.structure.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jszip-utils/dist/jszip-utils-ie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jszip-utils/dist/jszip-utils-ie.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jszip-utils/dist/jszip-utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jszip-utils/dist/jszip-utils.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jszip/dist/jszip.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/jquery/jszip/dist/jszip.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/CallService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/CardUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/ConsumInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/InsufficientBalanceException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/MobileCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/NetPackage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/NetService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/Scene.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/SendService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/ServicePackage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/SuperPackage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/TalkPackage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/CallService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/CardUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/ConsumInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/InsufficientBalanceException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/MobileCard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/NetPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/NetService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/Scene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/SendService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/ServicePackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/SuperPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/TalkPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/资费说明.txt" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectId" id="1Qxb5ACocM2Xwv04BmAezccOdYC" />
+  <component name="ProjectId" id="1SrOoXv10KvHSuMVvAAT3PaoOf3" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.39-bin.jar" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.updates" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -55,56 +142,94 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.sosoMobie">
-    <configuration name="Main" type="Application" factoryName="应用程序" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.sosoMobie.Main" />
-      <module name="移动营业大厅" />
+  <component name="RunManager">
+    <configuration name="Tomcat 7.0.92" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.92" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment>
+        <artifact name="SosoMobie:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/SosoMobie_war_exploded" />
+          </settings>
+        </artifact>
+        <file path="$PROJECT_DIR$/web/WEB-INF/lib/log4j-api-2.12.1.jar">
+          <settings>
+            <option name="CONTEXT_PATH" value="/log4j_api_2_12_1_jar" />
+          </settings>
+        </file>
+        <file path="$PROJECT_DIR$/web/WEB-INF/lib/log4j-core-2.12.1.jar">
+          <settings>
+            <option name="CONTEXT_PATH" value="/log4j_core_2_12_1_jar" />
+          </settings>
+        </file>
+        <file path="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.39-bin.jar">
+          <settings>
+            <option name="CONTEXT_PATH" value="/mysql_connector_java_5_1_39_bin_jar" />
+          </settings>
+        </file>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Tomcat_7_0_92_SosoMobie" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="53780" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="SosoMobie:war exploded" />
+        </option>
       </method>
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="sosoMobie" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.sosoMobie.Main" />
-      <module name="SosoMobie" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.sosoMobie" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.sosoMobie" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
-  </component>
-  <component name="StructureViewFactory">
-    <option name="AUTOSCROLL_MODE" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
