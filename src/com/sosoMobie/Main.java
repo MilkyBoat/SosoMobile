@@ -1,7 +1,5 @@
 package com.sosoMobie;
 
-import javax.sql.rowset.spi.SyncResolver;
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -66,146 +64,22 @@ public class Main {
             switch (select)
             {
                 case 1:
-                    String card, password;
-                    boolean flag;
-
-                    System.out.print("请输入手机卡号：");
-                    card = scanner.next();
-                    flag = cardUtil.isExistCard(card);
-                    if(flag){   //先检查卡号是否存在，验证存在后再输入密码
-                        System.out.print("请输入密码：");
-                        password = scanner.next();
-                        flag = cardUtil.isExistCard(card, password);
-                        if(flag){   //再检查密码是否正确
-                            System.out.println("登录成功");
-                            subMenu1(cardUtil, card);   //进入二级菜单
-                        }
-                        else{
-                            System.out.println("密码输入错误，请重试");
-                        }
-                    }
-                    else{
-                        System.out.println("手机卡号不存在，请重试");
+                    String card = cardUtil.singnedIn();
+                    if (card != null) {
+                        subMenu1(cardUtil, card);
                     }
                     break;
 
                 case 2:
-                    MobileCard newCard = new MobileCard();
-                    int numIndex = -1, numberCount = 9;
-
-                    System.out.println("*****可选的卡号*****");
-                    String[] numbers = cardUtil.getNewNumbers(numberCount);
-                    int cntLine = 0;    //该变量用于计数卡号数量，决定是否换行
-                    for(int i = 0; i < numbers.length; i++, cntLine++){
-                        if(cntLine != 0)
-                            System.out.print("\t");
-                        System.out.print(i + 1 + "." + numbers[i]);
-                        if(cntLine == 2){
-                            cntLine = -1;
-                            System.out.println();
-                        }
-                    }
-                    do{
-                        System.out.print("请选择卡号(输入1~9的序号)：");
-                        try{
-                            numIndex = scanner.nextInt();
-                        }
-                        catch (InputMismatchException e){
-                            scanner = new Scanner(System.in);
-                            numIndex = -1;
-                        }
-                    } while(numIndex < 1 || numIndex > numberCount);    //循环检查输入是否合法
-                    newCard.cardNumber = numbers[numIndex];
-
-                    do{
-                        System.out.print("1.话痨套餐 2.网虫套餐 3.超人套餐， 请选择套餐(输入序号)：");
-                        try{
-                            numIndex = scanner.nextInt();
-                        }
-                        catch (InputMismatchException e){
-                            scanner = new Scanner(System.in);
-                            numIndex = -1;
-                        }
-                    } while(numIndex < 1 || numIndex > 3);    //循环检查输入是否合法
-                    if(numIndex == 1)   //通话、上网、超级套餐分别代号1、2、3
-                        newCard.serPackage = new TalkPackage();
-                    else if(numIndex == 2)
-                        newCard.serPackage = new NetPackage();
-                    else
-                        newCard.serPackage = new SuperPackage();
-
-                    System.out.print("请输入姓名：");
-                    newCard.userName = scanner.next();
-
-                    System.out.print("请输入密码：");
-                    newCard.password = scanner.next();
-
-                    double preMoney = -1;
-                    boolean tempFlag = true;
-                    do{
-                        System.out.print("请输入预存话费金额：");
-                        if(!tempFlag)
-                            System.out.print("您预存的话费金额不足以支付本月固定套餐资费，请重新充值：");
-                        try{
-                            preMoney = scanner.nextDouble();
-                        }
-                        catch (InputMismatchException e){
-                            scanner = new Scanner(System.in);
-                            System.out.println("请输入正确的数字");
-                        }
-                        tempFlag = ! (preMoney < newCard.serPackage.price) || ! (preMoney > 0);
-                    } while(preMoney <= 0 || preMoney < newCard.serPackage.price);    //循环检查输入是否合法
-                    
-                    //直接扣除首月套餐费再存入
-                    newCard.money = preMoney - newCard.serPackage.price;
-
-                    cardUtil.addCard(newCard);
-                    System.out.print("注册成功！");
-                    newCard.showMeg();
-                    newCard.serPackage.showInfo();
-
+                    cardUtil.addCard();
                     break;
 
                 case 3:
-                    String num;
-                    do{
-                        System.out.print("请输入手机卡号：");
-                        num = scanner.next();
-                        if(!cardUtil.isExistCard(num))
-                            System.out.println("手机卡号不存在，请重试");
-                        else
-                            break;
-                    } while(true);
-                    cardUtil.useSoso(num);
+                    cardUtil.useSoso();
                     break;
 
                 case 4:
-                    System.out.print("请输入充值卡号：");
-                    String number = scanner.next();
-
-                    if(cardUtil.isExistCard(number)){
-                        double mount = -1;
-                        do{
-                            System.out.print("请输入充值金额：");
-                            try{
-                                mount = scanner.nextDouble();
-                            }
-                            catch (InputMismatchException e){
-                                scanner = new Scanner(System.in);
-                                System.out.println("请输入正确的数字");
-                            }
-                        } while(mount <= 0);    //循环检查输入是否合法
-
-                        if (mount < 50){
-                            System.out.println("充值金额至少为50元");
-                        }
-                        else{
-                            cardUtil.chargeMoney(number, mount);
-                        }
-                    }
-                    else{
-                        System.out.println("充值卡号不存在，请重试");
-                    }
+                    cardUtil.chargeMoney();
                     break;
 
                 case 5:
@@ -270,15 +144,7 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.println("******套餐变更******");
-                    String numIndex;
-                    do{
-                        System.out.print("1.话痨套餐 2.网虫套餐 3.超人套餐 请选择(序号)：");
-                        numIndex = scanner.next();
-                    } while(!numIndex.equals("1") && !numIndex.equals("2") && !numIndex.equals("3"));
-
-                    cardUtil.changingPack(card, numIndex);
-
+                    cardUtil.changingPack(card);
                     break;
 
                 case 5:

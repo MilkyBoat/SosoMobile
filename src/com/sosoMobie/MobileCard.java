@@ -34,11 +34,11 @@ public class MobileCard {
     public String userName;
     public String password;
     public ServicePackage serPackage;
-    public double consumAmount;
+	public double consumAmount = 0;
     public double money;
-    public int realTalkTime;
-    public int realSMSCount;
-    public int realFlow;
+	public int realTalkTime = 0;
+	public int realSMSCount = 0;
+	public int realFlow = 0;
 
     /**
      *  MobileCard

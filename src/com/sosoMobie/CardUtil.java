@@ -38,8 +38,7 @@ import java.util.*;
 
 public class CardUtil {
 	
-	private Map<String, MobileCard> cards;
-	private Map<String, List<ConsumInfo>> consumInfos;
+	private SosoDao sosoDAO;
 	private List<Scene> scenes;
 	
 	/***
@@ -49,39 +48,7 @@ public class CardUtil {
 	 */
 	
 	public CardUtil() {
-		
-		ServicePackage superPackage = new SuperPackage();
-		ServicePackage talkPackage = new TalkPackage();
-		ServicePackage netPackage = new NetPackage();
-		
-		cards = new HashMap<>();
-		MobileCard[] mobileCards = new MobileCard[5];
-		mobileCards[0] = new MobileCard("13965756432", "test1", "123", superPackage, 79);
-		mobileCards[1] = new MobileCard("17822011172", "徐云凯", "1713667", superPackage, 23333);
-		mobileCards[2] = new MobileCard("13924221868", "test2", "123", superPackage, 321);
-		mobileCards[3] = new MobileCard("13911568956", "test3", "123", netPackage, 1230);
-		mobileCards[4] = new MobileCard("13900000000", "test4", "123", talkPackage, 123);
-		for (MobileCard i : mobileCards) cards.put(i.cardNumber, i);
-		
-		consumInfos = new HashMap<>();
-		ConsumInfo[][] ifs = new ConsumInfo[2][3];
-		ifs[0][0] = new ConsumInfo("13924221868", "通话", 30);
-		ifs[0][1] = new ConsumInfo("13924221868", "上网", 30);
-		ifs[0][2] = new ConsumInfo("13924221868", "通话", 10);
-		ifs[1][0] = new ConsumInfo("13911568956", "短信", 5);
-		ifs[1][1] = new ConsumInfo("13911568956", "上网", 500);
-		for (int i = 0; i < 2; i++) {
-			List<ConsumInfo> consumInfoList = new ArrayList<>();
-			for (int j = 0; j < 3; j++) {
-				if (ifs[i][j] != null) consumInfoList.add(ifs[i][j]);
-			}
-			consumInfos.put(Objects.requireNonNull(ifs[i][0]).cardNumber, consumInfoList);
-		}
-		
-		for(MobileCard i : mobileCards){
-			i.money -= i.serPackage.price;
-		}
-		
+		sosoDAO = new SosoDaoMySQL();
 		initScenes();
 	}
 	
@@ -102,6 +69,40 @@ public class CardUtil {
 	}
 	
 	/***
+	 * Title: singnedIn
+	 * Description: [用户登录]
+	 * @return java.lang.String
+	 * @author 徐云凯
+	 * Datetime:  2019/11/16 20:28
+	 */
+	
+	public String singnedIn() {
+		Scanner scanner = new Scanner(System.in);
+		String card, password;
+		boolean flag;
+		
+		System.out.print("请输入手机卡号：");
+		card = scanner.next();
+		flag = isExistCard(card);
+		if (flag) {   //先检查卡号是否存在，验证存在后再输入密码
+			System.out.print("请输入密码：");
+			password = scanner.next();
+			flag = isExistCard(card, password);
+			if (flag) {   //再检查密码是否正确
+				System.out.println("登录成功");
+				return card;
+			}
+			else {
+				System.out.println("密码输入错误，请重试");
+			}
+		}
+		else {
+			System.out.println("手机卡号不存在，请重试");
+		}
+		return null;
+	}
+	
+	/***
 	 *  isExistCard
 	 * [判断指定卡号是否存在于系统中]
 	 * @param number: 卡号
@@ -110,7 +111,7 @@ public class CardUtil {
 	 */
 	
 	public boolean isExistCard(String number) {
-		return cards.containsKey(number);
+		return sosoDAO.isCardExit(number);
 	}
 	
 	/***
@@ -123,8 +124,7 @@ public class CardUtil {
 	 */
 	
 	public boolean isExistCard(String number, String password) {
-		if (isExistCard(number)) return cards.get(number).password.equals(password);
-		else return false;
+		return sosoDAO.isCardExit(number, password);
 	}
 	
 	/***
@@ -151,12 +151,87 @@ public class CardUtil {
 	/***
 	 *  addCard
 	 * [添加电话卡到系统中]
-	 * @param card:需要添加的电话卡 MobileCard 对象
 	 * @author  徐云凯
 	 */
 	
-	public void addCard(MobileCard card) {
-		cards.put(card.cardNumber, card);
+	public void addCard() {
+		Scanner scanner = new Scanner(System.in);
+		
+		MobileCard newCard = new MobileCard();
+		int numIndex, numberCount = 9;
+		
+		System.out.println("*****可选的卡号*****");
+		String[] numbers = getNewNumbers(numberCount);
+		int cntLine = 0;    //该变量用于计数卡号数量，决定是否换行
+		for (int i = 0; i < numbers.length; i++, cntLine++) {
+			if (cntLine != 0) {
+				System.out.print("\t");
+			}
+			System.out.print(i + 1 + "." + numbers[i]);
+			if (cntLine == 2) {
+				cntLine = - 1;
+				System.out.println();
+			}
+		}
+		do {
+			System.out.print("请选择卡号(输入1~9的序号)：");
+			try {
+				numIndex = scanner.nextInt();
+			}
+			catch (InputMismatchException e) {
+				scanner = new Scanner(System.in);
+				numIndex = - 1;
+			}
+		} while (numIndex < 1 || numIndex > numberCount);    //循环检查输入是否合法
+		newCard.cardNumber = numbers[numIndex - 1];
+		
+		ServicePackage[] servicePackages = sosoDAO.findPackage();
+		
+		int ind;
+		do {
+			System.out.println("请选择套餐(输入序号)：");
+			ind = 1;
+			for (ServicePackage i : servicePackages) {
+				if (i != null) {
+					System.out.println("\t" + ind++ + "\t" + i.name);
+				}
+			}
+			numIndex = scanner.nextInt();
+		} while (numIndex < 0 || numIndex > ind);
+		
+		newCard.serPackage = servicePackages[numIndex - 1];
+		
+		System.out.print("请输入姓名：");
+		newCard.userName = scanner.next();
+		
+		System.out.print("请输入密码：");
+		newCard.password = scanner.next();
+		
+		double preMoney = - 1;
+		boolean tempFlag = true;
+		do {
+			System.out.print("请输入预存话费金额：");
+			if (! tempFlag) {
+				System.out.print("您预存的话费金额不足以支付本月固定套餐资费，请重新充值：");
+			}
+			try {
+				preMoney = scanner.nextDouble();
+			}
+			catch (InputMismatchException e) {
+				scanner = new Scanner(System.in);
+				System.out.println("请输入正确的数字");
+			}
+			tempFlag = ! (preMoney < newCard.serPackage.price) || ! (preMoney > 0);
+		} while (preMoney <= 0 || preMoney < newCard.serPackage.price);    //循环检查输入是否合法
+		
+		//直接扣除首月套餐费再存入
+		newCard.money = preMoney - newCard.serPackage.price;
+		
+		sosoDAO.save(newCard);
+		
+		System.out.print("注册成功！");
+		newCard.showMeg();
+		newCard.serPackage.showInfo();
 	}
 	
 	/***
@@ -167,7 +242,7 @@ public class CardUtil {
 	 */
 	
 	public void delCard(String card) {
-		cards.remove(card);
+		sosoDAO.del(card);
 		System.out.print("*****办理退网*****\n" + "卡号" + card + "办理退网成功！\n" + "谢谢使用！\n");
 	}
 	
@@ -180,19 +255,13 @@ public class CardUtil {
 	
 	public void showRemainDetail(String number) {
 		DecimalFormat formatData = new DecimalFormat("#.0");
-		
+
 		System.out.print("******套餐余量查询******\n" + "您的卡号是" + number + "套餐内剩余：\n");
-		MobileCard c = cards.get(number);
-		if (c.serPackage instanceof TalkPackage) {
-			System.out.print("通话时长：" + Math.max(((TalkPackage) c.serPackage).talkTime - c.realTalkTime, 0) + "分钟\n"
-							+ "短信条数：" + Math.max(((TalkPackage) c.serPackage).smsCount - c.realSMSCount, 0) + "条\n");
-		} else if (c.serPackage instanceof SuperPackage) {
-			System.out.print( "通话时长：" + Math.max(((SuperPackage) c.serPackage).talkTime - c.realTalkTime, 0) + "分钟\n"
-							+ "短信条数：" + Math.max(((SuperPackage) c.serPackage).smsCount - c.realSMSCount, 0) + "条\n"
-							+ "上网流量：" + formatData.format(Math.max(((SuperPackage) c.serPackage).flow - c.realFlow, 0)) + "GB\n");
-		} else {
-			System.out.print( "上网流量：" + formatData.format(Math.max(((NetPackage) c.serPackage).flow * 1024 - c.realFlow, 0)) + "MB\n");
-		}
+		MobileCard c = sosoDAO.findCardByNumber(number);
+		ServicePackage tempServerPackage = sosoDAO.findPackage(c.serPackage.type);
+		System.out.print("通话时长：" + Math.max(tempServerPackage.getTalkTime() - c.realTalkTime, 0) + "分钟\n"
+				+ "短信条数：" + Math.max(tempServerPackage.getSmsCount(), 0) + "条\n"
+				+ "上网流量：" + formatData.format(Math.max(tempServerPackage.getFlow() - c.realFlow, 0)) + "GB\n");
 	}
 	
 	/***
@@ -205,7 +274,7 @@ public class CardUtil {
 	public void showAmountDetail(String number) {
 		DecimalFormat formatData = new DecimalFormat("#.0");
 		
-		MobileCard c = cards.get(number);
+		MobileCard c = sosoDAO.findCardByNumber(number);
 		
 		System.out.print(
 			"******本月账单查询******\n" +
@@ -225,19 +294,23 @@ public class CardUtil {
 	public void printConsumInfo(String number) {
 		StringBuilder content = new StringBuilder();
 		content.append("**********").append(number).append("消费记录**********\n").append("序号\t类型\t数据[通话(分钟)/上网(MB)/短信(条)]\n");
-		List<ConsumInfo> list = consumInfos.get(number);
-		for (int i = 0; i < list.size(); i++) {
-			content.append(i + 1).append(".\t").append(list.get(i).type).append("\t").append(list.get(i).consumData).append("\n");
+		ConsumInfo[] list = sosoDAO.findRecByNumber(number);
+		int ind = 1;
+		for (ConsumInfo i : list) {
+			if (i != null) {
+				content.append(ind++).append(".\t").append(i.type).append("\t").append(i.consumData).append("\n");
+			}
 		}
 		System.out.print(content);
 		
 		try {
 			File file = new File(number + " 消费记录.txt");
-			file.createNewFile();
-			FileWriter writer = new FileWriter(file);
-			writer.write(content.toString());
-			writer.flush();
-			writer.close();
+			if (file.createNewFile()) {
+				FileWriter writer = new FileWriter(file);
+				writer.write(content.toString());
+				writer.flush();
+				writer.close();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -249,37 +322,43 @@ public class CardUtil {
 	 *               随机从六个场景中选择一个，验证该卡套餐是否能够完成该场景操作后，分别调用对应类的对应消费方法，
 	 *               最后对余额不足情况进行异常处理，
 	 *               完成后添加一条消费记录并显示提示信息
-	 * @param number:消费使用的卡号
 	 * @author  徐云凯
 	 */
 	
-	public void useSoso(String number) {
+	public void useSoso() {
+		Scanner scanner = new Scanner(System.in);
+		
+		String number;
+		do {
+			System.out.print("请输入手机卡号：");
+			number = scanner.next();
+			if (! isExistCard(number)) {
+				System.out.println("手机卡号不存在，请重试");
+			}
+			else {
+				break;
+			}
+		} while (true);
+		
 		Random random = new Random();
 		int i;
-		MobileCard c = cards.get(number);
+		MobileCard c = sosoDAO.findCardByNumber(number);
 		Scene scene;
 		ConsumInfo info;
 		boolean flag = false;
 		
-		do{
-			i = random.nextInt(6);
-			scene = scenes.get(i);
-			
-			if(c.serPackage instanceof SuperPackage)
-				flag = true;
-			else if(c.serPackage instanceof TalkPackage)
-				flag = scene.type.equals("通话") || scene.type.equals("短信");
-			else
-				flag = scene.type.equals("上网");
-		}while(!flag);
+		scene = scenes.get(random.nextInt(6));
 		
 		try {
-			if(scene.type.equals("通话"))
-				((CallService)c.serPackage).call(scene.data, c);
-			else if(scene.type.equals("短信"))
-				((SendService)c.serPackage).send(scene.data, c);
-			else
-				((NetService)c.serPackage).netPlay(scene.data, c);
+			if (scene.type.equals("通话")) {
+				(c.serPackage).call(scene.data, c);
+			}
+			else if (scene.type.equals("短信")) {
+				(c.serPackage).send(scene.data, c);
+			}
+			else {
+				(c.serPackage).netPlay(scene.data, c);
+			}
 		} catch (InsufficientBalanceException e) {
 			System.out.println("本次已" + e.done() + "，您的余额不足，请充值后再使用！");
 			e.printStackTrace();
@@ -290,7 +369,7 @@ public class CardUtil {
 			else System.out.println("条");
 		}
 		
-		if (consumInfos.get(number) == null) {
+		if (sosoDAO.findRecByNumber(number) == null) {
 			System.out.print("不存在此卡的消费记录，");
 		}
 		info = new ConsumInfo(number, scene.type, scene.data);
@@ -299,8 +378,9 @@ public class CardUtil {
 	}
 	
 	private void addConsumInfo(String number, ConsumInfo info) {
-		consumInfos.computeIfAbsent(number, k -> new ArrayList<>());
-		consumInfos.get(number).add(info);
+		if (info != null) {
+			sosoDAO.save(info);
+		}
 	}
 	
 	/***
@@ -334,27 +414,40 @@ public class CardUtil {
 	 *  changingPack
 	 * 更换套餐，并进行合理性检查，包括是否同一套餐，是否余额不足
 	 * @param number: 卡号
-	 * @param packNum: 目标套餐代号，TalkPackage为1，NetPackage为2，SuperPackage为3。
 	 * @author  徐云凯
 	 */
 	
-	public void changingPack(String number, String packNum) {
-		MobileCard c = cards.get(number);
+	public void changingPack(String number) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		ServicePackage[] servicePackages = sosoDAO.findPackage();
+		
+		System.out.println("******套餐变更******");
+		String numIndex;
+		int nIndex;
+		int ind;
+		do {
+			ind = 1;
+			System.out.println("请选择(序号)：");
+			for (ServicePackage i : servicePackages)
+				if (i != null) {
+					System.out.println("\t" + ind++ + "\t" + i.name);
+				}
+			numIndex = scanner.next();
+			nIndex = Integer.parseInt(numIndex);
+		} while (nIndex < 0 || nIndex > ind);
+		
+		MobileCard c = sosoDAO.findCardByNumber(number);
 		
 		//检查更换套餐是否发生了变更
-		ServicePackage preSp = c.serPackage;
-		if ((packNum.equals("1") && preSp instanceof TalkPackage)
-				|| (packNum.equals("2") && preSp instanceof NetPackage)
-				|| (packNum.equals("3") && preSp instanceof SuperPackage)) {
+		if (servicePackages[nIndex - 1].type.equals(c.serPackage.type)) {
 			System.out.println("对不起，您已经是该套餐用户，无需更换套餐！");
 			return;
 		}
 		
 		//检查余额
-		ServicePackage toSp;
-		if (packNum.equals("1")) toSp = new TalkPackage();
-		else if (packNum.equals("2")) toSp = new NetPackage();
-		else toSp = new SuperPackage();
+		ServicePackage toSp = servicePackages[nIndex - 1];
 		
 		if (c.money < toSp.price) {
 			System.out.println("对不起，您的余额不足以支付新套餐本月资费，请充值后再办理更换套餐业务！");
@@ -365,6 +458,7 @@ public class CardUtil {
 		c.money -= toSp.price;
 		c.realTalkTime = c.realSMSCount = c.realFlow = 0;
 		c.serPackage = toSp;
+		sosoDAO.update(c);
 		System.out.println("套餐更换成功");
 		
 		//输出相关信息
@@ -375,16 +469,41 @@ public class CardUtil {
 	/***
 	 *  chargeMoney
 	 * 账户充值，充值金额低于50元报错，完成后显示最新余额
-	 * @param number: 卡号
-	 * @param money: 充值金额
 	 * @author  徐云凯
 	 */
 	
-	public void chargeMoney(String number, double money) {
-		//充值金额的检查在二级菜单中已完成，不做重复检查
-		DecimalFormat formatData = new DecimalFormat("#.0");    //用于控制精度
-		MobileCard mobileCard = cards.get(number);
-		mobileCard.money += money;
-		System.out.println(String.format("充值成功，当前话费余额为%s元。", formatData.format(mobileCard.money)));
+	public void chargeMoney() {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("请输入充值卡号：");
+		String number = scanner.next();
+		
+		if (isExistCard(number)) {
+			double money = - 1;
+			do {
+				System.out.print("请输入充值金额：");
+				try {
+					money = scanner.nextDouble();
+				}
+				catch (InputMismatchException e) {
+					scanner = new Scanner(System.in);
+					System.out.println("请输入正确的数字");
+				}
+			} while (money <= 0);    //循环检查输入是否合法
+			
+			if (money < 50) {
+				System.out.println("充值金额至少为50元");
+			}
+			else {
+				DecimalFormat formatData = new DecimalFormat("#.0");    //用于控制精度
+				MobileCard mobileCard = sosoDAO.findCardByNumber(number);
+				mobileCard.money += money;
+				sosoDAO.update(mobileCard);
+				System.out.println(String.format("充值成功，当前话费余额为%s元。", formatData.format(mobileCard.money)));
+			}
+		}
+		else {
+			System.out.println("充值卡号不存在，请重试");
+		}
 	}
 }
