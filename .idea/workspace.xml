@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="151e2435-3717-4b5c-8905-c129f472a333" name="默认的" comment="version 2.0&#10;&#10;将所有的数据访问全部使用数据库代替，数据库中使用了DAO模式，将sql操作与业务逻辑完全分离">
-      <change afterPath="$PROJECT_DIR$/~WRL3433.tmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java实验报告.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Java实验报告.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$va实验报告.docx" beforeDir="false" afterPath="$PROJECT_DIR$/~$va实验报告.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~WRL0859.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/17822011172 消费记录.txt" beforeDir="false" afterPath="$PROJECT_DIR$/17822011172 消费记录.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/CallService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/CardUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/CardUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/NetService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/SendService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/ServicePackage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/ServicePackage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/SosoDaoMySQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/SosoDaoMySQL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/SosoDaoUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/SosoDaoUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SosoMobie/database.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +68,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql&#10;mysql.8" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-5.1.39-bin.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
