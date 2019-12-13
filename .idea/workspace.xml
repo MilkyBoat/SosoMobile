@@ -5,11 +5,111 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="151e2435-3717-4b5c-8905-c129f472a333" name="默认的" comment="version 2.0&#10;&#10;将所有的数据访问全部使用数据库代替，数据库中使用了DAO模式，将sql操作与业务逻辑完全分离">
-      <change afterPath="$PROJECT_DIR$/~WRL3433.tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/17822011172 消费记录.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java实验报告.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mind 1.emmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/allclasses-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/allclasses.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/allpackages-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/CardUtil.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/ConsumInfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/InsufficientBalanceException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/Main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/MobileCard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/Scene.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/ServicePackage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/SosoDao.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/SosoDaoMySQL.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/SosoDaoUtil.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/com/sosoMobie/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/constant-values.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/element-list" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/help-doc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-10.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-11.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-12.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-13.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-14.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index-files/index-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/external/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-bg_flat_75_ffffff_40x100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-bg_glass_55_fbf9ee_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-bg_glass_65_ffffff_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-bg_glass_75_dadada_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-bg_glass_95_fef1ec_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-icons_222222_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-icons_2e83ff_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-icons_454545_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-icons_888888_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/images/ui-icons_cd0a0a_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jquery-3.3.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jquery-migrate-3.0.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jquery-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jquery-ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jquery-ui.structure.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jquery-ui.structure.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jszip-utils/dist/jszip-utils-ie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jszip-utils/dist/jszip-utils-ie.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jszip-utils/dist/jszip-utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jszip-utils/dist/jszip-utils.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jszip/dist/jszip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/jquery/jszip/dist/jszip.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/member-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/overview-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/package-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/resources/glass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/resources/x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/stylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/type-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/log4j-api-2.12.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/log4j-core-2.12.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-java-5.1.39-bin.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sosoMobie/SosoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sosoMobie/SosoDaoMySQL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/~$va实验报告.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/~WRL0859.tmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java实验报告.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Java实验报告.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$va实验报告.docx" beforeDir="false" afterPath="$PROJECT_DIR$/~$va实验报告.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~WRL0859.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SosoMobie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SosoMobie.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/CardUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/CardUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/MobileCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/MobileCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/NetPackage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/ServicePackage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/ServicePackage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/SuperPackage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SosoMobie/com/sosoMobie/TalkPackage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/CallService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/CardUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sosoMobie/CardUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sosoMobie/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/MobileCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sosoMobie/MobileCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/NetPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/NetService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/SendService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/ServicePackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sosoMobie/ServicePackage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/SuperPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/TalkPackage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sosoMobie/service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sosoMobie/SosoDaoUtil.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
