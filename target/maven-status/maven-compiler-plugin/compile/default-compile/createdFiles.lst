@@ -1,6 +1,0 @@
-com\ssm\dao\IUserDao.class
-com\ssm\service\IUserService.class
-com\ssm\model\User.class
-com\ssm\service\impl\UserServiceImpl.class
-com\ssm\controller\UserController.class
-com\ssm\IUserDaoTest.class
