@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="sosomobie.war">
+    <root id="archive" name="sosoMobile.war">
       <element id="artifact" artifact-name="sosomobie:war exploded" />
     </root>
   </artifact>

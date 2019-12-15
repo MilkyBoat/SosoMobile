@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为cardDao接口方法提供sql语句配置 -->
+<mapper namespace="cn.milkyship.sosoMobile.dao.CardDao">
+
+	<insert id="save" parameterType="MobileCard">
+		INSERT INTO user_info( cardNumber, userName, password, serPackage, money, realTalkTime, realSMSCount, realFlow)
+			VALUES (#{cardNumber}, #{userName}, #{password}, #{serPackage}, #{money}, 0, 0, 0)
+    </insert>
+
+	<delete id="del" parameterType="String">
+       DELETE FROM user_info WHERE card_number = #{number}
+    </delete>
+
+	<update id="update" parameterType="MobileCard">
+       UPDATE user_info SET
+				cardNumber = #{cardNumber},
+				userName = #{userName},
+				password = #{password},
+				serPackage = #{serPackage},
+				money = #{money},
+				realTalkTime = #{realTalkTime},
+				realSMSCount = #{realSMSCount},
+				realFlow = #{realFlow}
+				WHERE card_number = #{number}
+    </update>
+
+	<select id="findCardByNumber" parameterType="String" resultType="MobileCard">
+       SELECT * FROM user_info WHERE card_number = #{Number}
+    </select>
+
+</mapper>

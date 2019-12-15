@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为cardDao接口方法提供sql语句配置 -->
+<mapper namespace="cn.milkyship.sosoMobile.dao.ServicePackageDao">
+
+	<select id="findPackage" parameterType="String" resultType="ServicePackage">
+       SELECT * FROM servicePackage WHERE name = #{name}
+    </select>
+
+	<select id="findAllPackage" resultType="ServicePackage">
+       SELECT * FROM servicePackage
+    </select>
+
+</mapper>

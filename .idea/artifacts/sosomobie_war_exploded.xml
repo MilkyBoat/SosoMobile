@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="sosomobie:war exploded">
-    <output-path>$PROJECT_DIR$/target/sosomobie</output-path>
+    <output-path>$PROJECT_DIR$/target/sosoMobile</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
@@ -42,7 +42,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/sosomobie/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/sosoMobile/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="sosomobie/web/Web" />
     </root>

@@ -5,12 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>cn.milkyship</groupId>
-  <artifactId>sosomobie</artifactId>
+	<artifactId>sosoMobile</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>sosomobie Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
+	<name>sosoMobile Maven Webapp</name>
   <url>http://www.milkyship.cn</url>
 
   <properties>
@@ -67,7 +66,7 @@
     <dependency>
       <groupId>com.mchange</groupId>
       <artifactId>c3p0</artifactId>
-      <version>0.9.5.4</version>
+	    <version>0.9.5.2</version>
     </dependency>
 
     <!-- MyBatis -->
@@ -129,7 +128,7 @@
   </dependencies>
 
   <build>
-    <finalName>sosomobie</finalName>
+	  <finalName>sosoMobile</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
