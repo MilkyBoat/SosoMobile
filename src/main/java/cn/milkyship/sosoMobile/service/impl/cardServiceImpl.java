@@ -7,5 +7,21 @@ package cn.milkyship.sosoMobile.service.impl;
  * @version v1.0
  */
 
-public class cardServiceImpl {
+import cn.milkyship.sosoMobile.dao.CardDao;
+import cn.milkyship.sosoMobile.model.MobileCard;
+import cn.milkyship.sosoMobile.service.CardService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+
+@Service ("CardService")
+public class cardServiceImpl implements CardService {
+	
+	@Resource
+	private CardDao cardDao;
+	
+	@Override
+	public String bill(MobileCard mobileCard) {
+		return null;
+	}
 }

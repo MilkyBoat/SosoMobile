@@ -70,18 +70,10 @@ public class MobileCard {
 		this.password = password;
 		this.serPackage = serPackage;
 		this.money = money;
-	}
-	
-	/**
-	 * showMeg
-	 * [输出电话卡基础信息及余额]
-	 *
-	 * @author 徐云凯
-	 */
-	
-	public void showMeg() {
-		DecimalFormat formatData = new DecimalFormat("#.0");
-		System.out.println("卡号：" + cardNumber + " 用户名：" + userName + " 当前余额" + formatData.format(money));
+		this.consumAmount = 0;
+		this.realTalkTime = 0;
+		this.realSMSCount = 0;
+		this.realFlow = 0;
 	}
 	
 	public String getCardNumber() {

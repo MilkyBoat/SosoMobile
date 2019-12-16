@@ -24,10 +24,10 @@
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                    document.getElementById("userSoso").innerHTML = xmlhttp.responseText;
+                    document.getElementById("userSosoOutput").innerHTML = xmlhttp.responseText;
                 }
             }
-            xmlhttp.open("POST", "user/showUser.do", true);
+            xmlhttp.open("POST", "user/useSoso.do", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("number=" + number);
         }
@@ -38,21 +38,14 @@
             if (number < 13900000000 || number > 17822011172)
                 return false;
             var xmlhttp = new XMLHttpRequest();
-            var form = new FormData();
-            form.append("number", number.toString());
-            form.append("amount", amount.toString());
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                    document.getElementById("charge").innerHTML = xmlhttp.responseText;
+                    document.getElementById("chargeOutput").innerHTML = xmlhttp.responseText;
                 }
             }
             xmlhttp.open("POST", "user/charge.do", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send(form);
-        }
-
-        function showDescription() {
-            location.href = "${pageContext.request.contextPath }/resource/charges descreption.txt";
+            xmlhttp.send("infos=" + number + ";" + amount);
         }
 	</script>
 
@@ -65,40 +58,35 @@
 </div>
 
 <div class="login">
-	<form id="login" action="mySosoMobile.jsp" method="post">
+	<form id="login" class="form" action="user/mySosoMobile.jsp" method="post">
 		用户名：<input name="number" type="number" min="13900000000" max="17822011172" step="1">
 		密码：<input name="password" type="password">
 		<input class="submit" type="submit" value="登录">
+		<input class="submit" type="submit" formaction="user/signUp.jsp" value="没有账号？去注册">
 	</form>
 </div>
 
 <div class="fun">
-	<form id="singnUp" action="signUp.jsp">
-		<input class="submit" type="submit" value="没有账号？去注册">
-	</form>
-</div>
-
-<div class="fun">
-	<form id="userSoso">
+	<div id="userSoso" class="form">
 		用户名：<input id="userUseSoso" name="number" type="number" min="13900000000" max="17822011172" step="1">
 		<input class="submit" type="submit" onclick="userSoso()" value="使用嗖嗖">
-	</form>
-	<p id="userSosoOutput"></p>
+		<p id="userSosoOutput"></p>
+	</div>
 </div>
 
 <div class="fun">
-	<form id="charge">
+	<div id="charge" class="form">
 		用户名：<input name="number" id="userCharge" type="number" min="13900000000" max="17822011172" step="1">
 		充值金额：<input name="amount" id="chargeAmount" type="number" min="50" step="1">
 		<input class="submit" type="submit" onclick="charge()" value="话费充值">
 		<p id="chargeOutput"></p>
-	</form>
+	</div>
 </div>
 
 <div class="fun">
-	<form>
-		<input class="submit" type="submit" onclick="showDescription()" value="查看资费详情">
-	</form>
+	<div class="form">
+		<a href="${pageContext.request.contextPath }/resource/FeesDetails.pdf">查看资费详情</a>
+	</div>
 </div>
 
 </body>

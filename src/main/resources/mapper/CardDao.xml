@@ -10,7 +10,7 @@
     </insert>
 
 	<delete id="del" parameterType="String">
-       DELETE FROM user_info WHERE card_number = #{number}
+       DELETE FROM user_info WHERE cardNumber = #{number}
     </delete>
 
 	<update id="update" parameterType="MobileCard">
@@ -23,11 +23,11 @@
 				realTalkTime = #{realTalkTime},
 				realSMSCount = #{realSMSCount},
 				realFlow = #{realFlow}
-				WHERE card_number = #{number}
+				WHERE cardNumber = #{cardNumber}
     </update>
 
 	<select id="findCardByNumber" parameterType="String" resultType="MobileCard">
-       SELECT * FROM user_info WHERE card_number = #{Number}
+       SELECT * FROM user_info WHERE cardNumber = #{number}
     </select>
 
 </mapper>

@@ -12,7 +12,6 @@ package cn.milkyship.sosoMobile.model;
 public class ServicePackage {
 	
 	private String name = null;
-	private String type = null;
 	
 	private int talkTime = 0;
 	private int smsCount = 0;
@@ -25,7 +24,7 @@ public class ServicePackage {
 	/***
 	 * Title: ServicePackage
 	 * Description: [带参构造]
-	 * @param type:
+	 * @param name:
 	 * @param price:
 	 * @param talkTime:
 	 * @param smsCount:
@@ -34,21 +33,12 @@ public class ServicePackage {
 	 * Datetime:  2019/11/16 21:16
 	 */
 	
-	public ServicePackage(String type, double price, int talkTime, int smsCount, int flow) {
-		this.type = type;
+	public ServicePackage(String name, double price, int talkTime, int smsCount, int flow) {
+		this.name = name;
 		this.price = price;
 		this.talkTime = talkTime;
 		this.smsCount = smsCount;
 		this.flow = flow;
-	}
-	
-	/**
-	 * <H2>public void showInfo()</H2>
-	 * 输出套餐信息
-	 */
-	
-	public void showInfo() {
-		System.out.println(String.format("网虫套餐：通话时长为%d分钟/月，短信条数为%d条/月，上网流量为%dGB/月", talkTime, smsCount, flow));
 	}
 	
 	/**
@@ -59,7 +49,7 @@ public class ServicePackage {
 	 * @param card:     电话卡实体类
 	 * @return int 实际消费额度
 	 */
-	public int call(int minCount, MobileCard card) {
+	public ConsumInfo call(int minCount, MobileCard card) {
 		
 		if (card.realTalkTime + minCount >= talkTime) {
 			int temp = 0;
@@ -72,19 +62,18 @@ public class ServicePackage {
 				card.realTalkTime += minCount;
 				card.money -= minCount * 0.2;
 				temp += minCount;
-				return temp;
+				return new ConsumInfo(card.cardNumber, "通话", temp);
 			}
 			else {
 				temp += (int) Math.round(card.money / 0.2);
 				card.realTalkTime += temp;
 				card.money = 0;
-				//  TODO: throw new InsufficientBalanceException("通话" + temp + "分钟");
-				return minCount;
+				return new ConsumInfo(card.cardNumber, "通话", temp);
 			}
 		}
 		else {
 			card.realTalkTime += minCount;
-			return minCount;
+			return new ConsumInfo(card.cardNumber, "通话", minCount);
 		}
 	}
 	
@@ -97,7 +86,7 @@ public class ServicePackage {
 	 * @return int 实际消费额度
 	 */
 	
-	public int netPlay(int flow, MobileCard card) {
+	public ConsumInfo netPlay(int flow, MobileCard card) {
 		
 		if (card.realFlow + flow >= this.flow * 1024) {
 			int temp = 0;
@@ -110,19 +99,18 @@ public class ServicePackage {
 				card.realFlow += flow;
 				card.money -= flow * 0.1;
 				temp += flow;
-				return temp;
+				return new ConsumInfo(card.cardNumber, "上网", temp);
 			}
 			else {
 				temp += (int) Math.round(card.money / 0.1);
 				card.realFlow += temp;
 				card.money = 0;
-				// TODO: throw new InsufficientBalanceException("上网" + temp + "MB");
-				return flow;
+				return new ConsumInfo(card.cardNumber, "上网", temp);
 			}
 		}
 		else {
 			card.realFlow += flow;
-			return flow;
+			return new ConsumInfo(card.cardNumber, "上网", flow);
 		}
 	}
 	
@@ -135,7 +123,7 @@ public class ServicePackage {
 	 * @return int 实际消费额度
 	 */
 	
-	public int send(int count, MobileCard card) {
+	public ConsumInfo send(int count, MobileCard card) {
 		
 		if (card.realSMSCount + count >= smsCount) {
 			int temp = 0;
@@ -148,19 +136,18 @@ public class ServicePackage {
 				card.realSMSCount += count;
 				card.money -= count * 0.1;
 				temp += count;
-				return temp;
+				return new ConsumInfo(card.cardNumber, "短信", temp);
 			}
 			else {
 				temp += (int) Math.round(card.money / 0.1);
 				card.realSMSCount += temp;
 				card.money = 0;
-				// TODO: throw new InsufficientBalanceException("短信" + temp + "条");
-				return count;
+				return new ConsumInfo(card.cardNumber, "短信", temp);
 			}
 		}
 		else {
 			card.realSMSCount += count;
-			return count;
+			return new ConsumInfo(card.cardNumber, "短信", count);
 		}
 	}
 	
@@ -170,14 +157,6 @@ public class ServicePackage {
 	
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public String getType() {
-		return type;
-	}
-	
-	public void setType(String type) {
-		this.type = type;
 	}
 	
 	public int getTalkTime() {
