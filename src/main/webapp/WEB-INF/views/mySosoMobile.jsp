@@ -61,7 +61,8 @@
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                    document.getElementById("chargeOutput").innerHTML = xmlhttp.responseText;
+                    var infoLen = xmlhttp.responseText.length;
+                    document.getElementById("packOutput").innerHTML = xmlhttp.responseText.substring(1, infoLen - 1);
                 }
             }
             xmlhttp.open("POST", "changePack.do", true);
