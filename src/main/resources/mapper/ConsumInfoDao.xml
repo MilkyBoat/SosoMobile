@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 设置为cardDao接口方法提供sql语句配置 -->
+<!-- 设置为ConsumInfoDao接口方法提供sql语句配置 -->
 <mapper namespace="cn.milkyship.sosoMobile.dao.ConsumInfoDao">
 
 	<insert id="save" parameterType="ConsumInfo">
-		INSERT INTO call_record( card_number, rec_type, consum_data, rec_time)
-			VALUES (#{cardNumber}, #{type}, #{consumData}, NOW())
+		INSERT INTO call_record( cardNumber, recType, consumData)
+			VALUES (#{cardNumber}, #{recType}, #{consumData})
     </insert>
 
 	<delete id="del" parameterType="ConsumInfo">
-       DELETE FROM call_record WHERE card_number = #{cardNumber}, rec_type = #{type}, consum_data = #{consumData}
+       DELETE FROM call_record WHERE cardNumber = #{cardNumber}, recType = #{recType}, consumData = #{consumData}
     </delete>
 
 	<update id="update" parameterType="ConsumInfo">
        UPDATE call_record SET
-				card_number = #{cardNumber},
-				rec_type = #{type},
-				consum_data = #{consumData},
-				rec_time = NOW()
-				WHERE card_number = #{cardNumber}
+				cardNumber = #{cardNumber},
+				recType = #{recType},
+				consumData = #{consumData}
+				WHERE cardNumber = #{cardNumber}
     </update>
 
-	<resultMap id="consumInfoMap" type="ConsumInfo">
-		<result property="cardNumber" column="card_number"/>
-		<result property="type" column="rec_type"/>
-		<result property="consumData" column="consum_data"/>
-	</resultMap>
-
-	<select id="findRecByNumber" resultMap="consumInfoMap" parameterType="String" fetchSize="20">
-       SELECT card_number, rec_type, consum_data FROM call_record WHERE card_number = #{Number}
+	<select id="findRecByNumber" resultType="consumInfo" parameterType="String">
+       SELECT cardNumber, recType, consumData FROM call_record WHERE cardNumber = #{Number}
     </select>
 
 </mapper>

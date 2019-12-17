@@ -21,22 +21,25 @@ package cn.milkyship.sosoMobile.model;
 
 public class ConsumInfo {
 	
-	public String cardNumber;
-	public String type;
+	private String cardNumber;
+	private String recType;
 	public int consumData;
+	
+	public ConsumInfo() {
+	}
 	
 	/**
 	 * <H2> public ConsumInfo(String cardNumber, String type, int consumData) </H2>
 	 * 用户信息类的唯一构造函数
 	 *
 	 * @param cardNumber 卡号，String
-	 * @param type       消费类型， String
+	 * @param recType       消费类型， String
 	 * @param consumData 消费数额， int
 	 */
 	
-	public ConsumInfo(String cardNumber, String type, int consumData) {
+	public ConsumInfo(String cardNumber, String recType, int consumData) {
 		this.cardNumber = cardNumber;
-		this.type = type;
+		this.recType = recType;
 		this.consumData = consumData;
 	}
 	
@@ -44,20 +47,20 @@ public class ConsumInfo {
 		return cardNumber;
 	}
 	
-	public String getType() {
-		return type;
-	}
-	
-	public int getConsumData() {
-		return consumData;
-	}
-	
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 	
-	public void setType(String type) {
-		this.type = type;
+	public String getRecType() {
+		return recType;
+	}
+	
+	public void setRecType(String recType) {
+		this.recType = recType;
+	}
+	
+	public int getConsumData() {
+		return consumData;
 	}
 	
 	public void setConsumData(int consumData) {

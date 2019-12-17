@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: surface
   Date: 2019/12/15
-  Time: 21:18
+  Time: 18:28
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -21,7 +21,6 @@
 			width: 280px;
 			text-align: right;
 		}
-
 		.form p {
 			text-align: left;
 		}
@@ -47,10 +46,10 @@
 
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                    document.getElementById("info").innerHTML = xmlhttp.responseText;
+                    var infoLen = xmlhttp.responseText.length;
+                    document.getElementById("info").innerHTML = xmlhttp.responseText.substring(1, infoLen - 1);
                 }
             }
-
             xmlhttp.open("POST", "reg.do", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("info=" + number + ";" + userName + ";" + pwd + ";" + pack + ";" + money);
@@ -69,15 +68,15 @@
 </div>
 
 <div id="signUp" class="form">
-	选择手机号码：<input id="number" name="number" type="number" min="13900000000" max="17822011172" step="1"
-	              list="numbers"><br>
+	<label for="number">选择手机号码：</label><input id="number" name="number" type="number" min="13900000000"
+	                                          max="17822011172" step="1" list="numbers"><br>
 	<datalist id="numbers"></datalist>
-	用户名：<input id="userName" name="userName" type="text"><br>
-	密码：<input id="password" name="password" type="password"><br>
-	确认密码：<input id="rePassword" name="repPassword" type="password"><br>
-	选择套餐：<input id="package" name="servicePackage" type="text" list="packages"><br>
+	<label for="userName">用户名：</label><input id="userName" name="userName" type="text"><br>
+	<label for="password">密码：</label><input id="password" name="password" type="password"><br>
+	<label for="rePassword">确认密码：</label><input id="rePassword" name="repPassword" type="password"><br>
+	<label for="package">选择套餐：</label><input id="package" name="servicePackage" type="text" list="packages"><br>
 	<datalist id="packages"></datalist>
-	预存金额：<input id="money" name="preMoney" type="number" min="0" step="0.01"><br>
+	<label for="money">预存金额：</label><input id="money" name="preMoney" type="number" min="0" step="0.01"><br>
 	<div style="text-align: center">
 		<input class="submit" type="submit" onclick="reg()" value="注册">
 	</div>

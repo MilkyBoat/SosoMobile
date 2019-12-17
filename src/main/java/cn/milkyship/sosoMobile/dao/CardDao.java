@@ -2,6 +2,7 @@ package cn.milkyship.sosoMobile.dao;
 
 import cn.milkyship.sosoMobile.model.MobileCard;
 
+
 public interface CardDao {
 	/**
 	 * Title: save
@@ -41,4 +42,14 @@ public interface CardDao {
 	 */
 	MobileCard findCardByNumber(String Number);
 	
+	/***
+	 * Title: findCardByNumber
+	 * Description: [由卡号与密码查找电话卡]
+	 * @param Number:
+	 * @param password:
+	 * @return cn.milkyship.sosoMobile.model.MobileCard
+	 * @author 徐云凯
+	 * Datetime:  2019/11/13 22:36
+	 */
+	MobileCard checkCard(String Number, String password);
 }

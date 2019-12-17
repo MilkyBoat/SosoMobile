@@ -41,7 +41,11 @@
 		<servlet-name>SpringMVC</servlet-name>
 		<!-- 匹配所有请求，此处也可以配置成 *.do 形式 -->
 		<!-- *.do是对所有以.do结尾的请求做处理，/*是对所有请求做处理-->
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
 
 </web-app>

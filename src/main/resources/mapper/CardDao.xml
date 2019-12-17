@@ -30,4 +30,7 @@
        SELECT * FROM user_info WHERE cardNumber = #{number}
     </select>
 
+	<select id="checkCard" resultType="MobileCard">
+       SELECT * FROM user_info WHERE cardNumber = #{arg0} and password = #{arg1}
+    </select>
 </mapper>

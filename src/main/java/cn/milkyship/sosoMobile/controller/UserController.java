@@ -1,6 +1,7 @@
 package cn.milkyship.sosoMobile.controller;
 
 import cn.milkyship.sosoMobile.model.ServicePackage;
+import cn.milkyship.sosoMobile.service.CardService;
 import cn.milkyship.sosoMobile.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping ("/user")
-public class userController {
+public class UserController {
 	
 	@Resource
 	private UserService userService;
@@ -40,6 +41,11 @@ public class userController {
 		ObjectMapper mapper = new ObjectMapper();
 		response.getWriter().write(mapper.writeValueAsString(info));
 		response.getWriter().close();
+	}
+	
+	@RequestMapping ("/signUp")
+	public String jumpToRegPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		return "/signUp";
 	}
 	
 	@RequestMapping ("/reg.do")
@@ -77,7 +83,7 @@ public class userController {
 	public void getServicePackages(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		ServicePackage[] packs = this.userService.getServicePackages();
+		List<ServicePackage> packs = this.userService.getServicePackages();
 		StringBuilder output = new StringBuilder();
 		for (ServicePackage i : packs)
 			output.append("<option value='").append(i.getName()).append("'></option>");

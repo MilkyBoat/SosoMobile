@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -54,13 +55,13 @@ public class userServiceImpl implements UserService {
 		
 		ConsumInfo consumInfo;
 		if (scene.type.equals("通话")) {
-			consumInfo = servicePackage.call(scene.data, mobileCard);
+			consumInfo = call(scene.data, mobileCard, servicePackageDao.findPackage(mobileCard.getSerPackage()));
 		}
 		else if (scene.type.equals("短信")) {
-			consumInfo = servicePackage.send(scene.data, mobileCard);
+			consumInfo = send(scene.data, mobileCard, servicePackageDao.findPackage(mobileCard.getSerPackage()));
 		}
 		else {
-			consumInfo = servicePackage.netPlay(scene.data, mobileCard);
+			consumInfo = netPlay(scene.data, mobileCard, servicePackageDao.findPackage(mobileCard.getSerPackage()));
 		}
 		
 		cardDao.update(mobileCard);
@@ -117,11 +118,11 @@ public class userServiceImpl implements UserService {
 			return output.toString();
 		}
 		
-		mobileCard.money += money;
+		mobileCard.setMoney(mobileCard.getMoney() + money);
 		cardDao.update(mobileCard);
 		
 		output.append("充值成功，当前余额");
-		output.append(mobileCard.money);
+		output.append(mobileCard.getMoney());
 		output.append("元。");
 		
 		return output.toString();
@@ -134,22 +135,22 @@ public class userServiceImpl implements UserService {
 		if (cardDao.findCardByNumber(number) != null) {
 			return "卡号已被使用";
 		}
-		newCard.cardNumber = number;
+		newCard.setCardNumber(number);
 		
 		ServicePackage servicePackage = servicePackageDao.findPackage(servicePackageName);
 		if (servicePackage == null) {
 			return "套餐不存在";
 		}
-		newCard.serPackage = servicePackageName;
-		newCard.userName = userName;
-		newCard.password = password;
+		newCard.setSerPackage(servicePackageName);
+		newCard.setUserName(userName);
+		newCard.setPassword(password);
 		
 		if (preMoney - servicePackage.getPrice() < 0) {
 			return "预存的话费金额不足以支付本月固定套餐资费";
 		}
 		
 		//直接扣除首月套餐费再存入
-		newCard.money = preMoney - servicePackage.getPrice();
+		newCard.setMoney(preMoney - servicePackage.getPrice());
 		
 		cardDao.save(newCard);
 		
@@ -158,8 +159,8 @@ public class userServiceImpl implements UserService {
 		DecimalFormat formatData = new DecimalFormat("#.0");
 		info.append("卡号：").append(number).
 				append(" 用户名：").append(userName).
-				append(" 当前余额：").append(formatData.format(newCard.money)).append("元。");
-		info.append(String.format("%s：通话时长为%d分钟/月，短信条数为%d条/月，上网流量为%dGB/月",
+				append(" 当前余额：").append(formatData.format(newCard.getMoney())).append("元。");
+		info.append(String.format("%s：通话时长为%d分钟/月，短信条数为%d条/月，上网流量为%dMB/月",
 				servicePackage.getName(), servicePackage.getTalkTime(), servicePackage.getSmsCount(), servicePackage.getFlow()));
 		return info.toString();
 	}
@@ -183,7 +184,137 @@ public class userServiceImpl implements UserService {
 	}
 	
 	@Override
-	public ServicePackage[] getServicePackages() {
-		return servicePackageDao.findAllPackage();
+	public List<ServicePackage> getServicePackages() {
+		List<ServicePackage> list = new ArrayList<>();
+		Collections.addAll(list, servicePackageDao.findAllPackage());
+		return list;
+	}
+	
+	@Override
+	public List<ServicePackage> getAviliablePackages(String number) {
+		MobileCard mobileCard = cardDao.findCardByNumber(number);
+		if (mobileCard == null) {
+			return null;
+		}
+		List<ServicePackage> list = new ArrayList<>();
+		ServicePackage[] servicePackages = servicePackageDao.findAllPackage();
+		for (ServicePackage i : servicePackages)
+			if (! i.getName().equals(mobileCard.getSerPackage())) {
+				list.add(i);
+			}
+		return list;
+	}
+	
+	/**
+	 * <H3>int call(int minCount, MobileCard card) throws InsufficientBalanceException</H3>
+	 * 通话功能实现，用于计算实际可消费额度并扣除对应套餐余量或账户余额
+	 *
+	 * @param minCount:       消费数额
+	 * @param card:           电话卡实体类
+	 * @param servicePackage:
+	 * @return int 实际消费额度
+	 */
+	private ConsumInfo call(int minCount, MobileCard card, ServicePackage servicePackage) {
+		
+		if (card.getRealTalkTime() + minCount >= servicePackage.getTalkTime()) {
+			int temp = 0;
+			if (card.getRealTalkTime() < servicePackage.getTalkTime()) {
+				temp += servicePackage.getTalkTime() - card.getRealTalkTime();
+				minCount -= servicePackage.getTalkTime() - card.getRealTalkTime();
+				card.setRealTalkTime(servicePackage.getTalkTime());
+			}
+			if (card.getMoney() >= minCount * 0.2) {
+				card.setRealTalkTime(card.getRealTalkTime() + minCount);
+				card.setMoney(card.getMoney() - minCount * 0.2);
+				temp += minCount;
+				return new ConsumInfo(card.getCardNumber(), "通话", temp);
+			}
+			else {
+				temp += (int) Math.round(card.getMoney() / 0.2);
+				card.setRealTalkTime(card.getRealTalkTime() + temp);
+				card.setMoney(0);
+				return new ConsumInfo(card.getCardNumber(), "通话", temp);
+			}
+		}
+		else {
+			card.setRealTalkTime(card.getRealTalkTime() + minCount);
+			return new ConsumInfo(card.getCardNumber(), "通话", minCount);
+		}
+	}
+	
+	/**
+	 * <H3>int netPlay(int flow, MobileCard card) throws InsufficientBalanceException</H3>
+	 * 上网功能实现，用于计算实际可消费额度并扣除对应套餐余量或账户余额
+	 *
+	 * @param flow            消费额度
+	 * @param card            用户电话卡实体类
+	 * @param servicePackage:
+	 * @return int 实际消费额度
+	 */
+	
+	private ConsumInfo netPlay(int flow, MobileCard card, ServicePackage servicePackage) {
+		
+		if (card.getRealFlow() + flow >= servicePackage.getFlow()) {
+			int temp = 0;
+			if (card.getRealFlow() < servicePackage.getFlow()) {
+				temp += servicePackage.getFlow() - card.getRealFlow();
+				flow -= servicePackage.getFlow() - card.getRealFlow();
+				card.setRealFlow(servicePackage.getFlow());
+			}
+			if (card.getMoney() >= flow * 0.1) {
+				card.setRealFlow(card.getRealFlow() + flow);
+				card.setMoney((card.getMoney() - flow * 0.1));
+				temp += flow;
+				return new ConsumInfo(card.getCardNumber(), "上网", temp);
+			}
+			else {
+				temp += (int) Math.round(card.getMoney() / 0.1);
+				card.setRealFlow(card.getRealFlow() + temp);
+				card.setMoney(0);
+				return new ConsumInfo(card.getCardNumber(), "上网", temp);
+			}
+		}
+		else {
+			card.setRealFlow(card.getRealFlow() + flow);
+			return new ConsumInfo(card.getCardNumber(), "上网", flow);
+		}
+	}
+	
+	/**
+	 * <H3>int send(int count, MobileCard card) throws InsufficientBalanceException</H3>
+	 * 短信功能实现，用于计算实际可消费额度并扣除对应套餐余量或账户余额
+	 *
+	 * @param count           消费额度
+	 * @param card            用户电话卡实体类
+	 * @param servicePackage:
+	 * @return int 实际消费额度
+	 */
+	
+	private ConsumInfo send(int count, MobileCard card, ServicePackage servicePackage) {
+		
+		if (card.getRealSMSCount() + count >= servicePackage.getSmsCount()) {
+			int temp = 0;
+			if (card.getRealSMSCount() < servicePackage.getSmsCount()) {
+				temp += servicePackage.getSmsCount() - card.getRealSMSCount();
+				count -= servicePackage.getSmsCount() - card.getRealSMSCount();
+				card.setRealSMSCount(servicePackage.getSmsCount());
+			}
+			if (card.getMoney() >= count * 0.1) {
+				card.setRealSMSCount(card.getRealSMSCount() + count);
+				card.setMoney(card.getMoney() - count * 0.1);
+				temp += count;
+				return new ConsumInfo(card.getCardNumber(), "短信", temp);
+			}
+			else {
+				temp += (int) Math.round(card.getMoney() / 0.1);
+				card.setRealSMSCount(card.getRealSMSCount() + temp);
+				card.setMoney(0);
+				return new ConsumInfo(card.getCardNumber(), "短信", temp);
+			}
+		}
+		else {
+			card.setRealSMSCount(card.getRealSMSCount() + count);
+			return new ConsumInfo(card.getCardNumber(), "短信", count);
+		}
 	}
 }

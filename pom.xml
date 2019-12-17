@@ -125,6 +125,19 @@
       <version>${spring.version}</version>
     </dependency>
 
+	  <!-- jstl -->
+	  <dependency>
+		  <groupId>javax.servlet</groupId>
+		  <artifactId>jstl</artifactId>
+		  <version>1.2</version>
+	  </dependency>
+	  <!--standard.jar-->
+	  <dependency>
+		  <groupId>taglibs</groupId>
+		  <artifactId>standard</artifactId>
+		  <version>1.1.2</version>
+	  </dependency>
+
   </dependencies>
   <build>
 	  <finalName>sosoMobile</finalName>

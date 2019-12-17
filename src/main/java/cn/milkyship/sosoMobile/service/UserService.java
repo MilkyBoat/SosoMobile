@@ -14,5 +14,7 @@ public interface UserService {
 	
 	public List<String> getNewNumbers(int numberCount);
 	
-	public ServicePackage[] getServicePackages();
+	public List<ServicePackage> getServicePackages();
+	
+	public List<ServicePackage> getAviliablePackages(String number);
 }

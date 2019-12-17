@@ -32,15 +32,15 @@ import java.text.DecimalFormat;
 
 public class MobileCard {
 	
-	public String cardNumber;
-	public String userName;
-	public String password;
-	public String serPackage;
-	public double consumAmount = 0;
-	public double money;
-	public int realTalkTime = 0;
-	public int realSMSCount = 0;
-	public int realFlow = 0;
+	private String cardNumber;
+	private String userName;
+	private String password;
+	private String serPackage;
+	private double consumAmount = 0;
+	private double money;
+	private int realTalkTime = 0;
+	private int realSMSCount = 0;
+	private int realFlow = 0;
 	
 	/**
 	 * MobileCard

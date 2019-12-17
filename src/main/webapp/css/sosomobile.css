@@ -56,6 +56,10 @@ input {
     height: 180px;
 }
 
+.form p p {
+    margin: 0;
+}
+
 .login form {
     background-color: #d3d3d3;
 }
