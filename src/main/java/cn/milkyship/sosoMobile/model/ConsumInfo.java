@@ -28,15 +28,6 @@ public class ConsumInfo {
 	public ConsumInfo() {
 	}
 	
-	/**
-	 * <H2> public ConsumInfo(String cardNumber, String type, int consumData) </H2>
-	 * 用户信息类的唯一构造函数
-	 *
-	 * @param cardNumber 卡号，String
-	 * @param recType       消费类型， String
-	 * @param consumData 消费数额， int
-	 */
-	
 	public ConsumInfo(String cardNumber, String recType, int consumData) {
 		this.cardNumber = cardNumber;
 		this.recType = recType;

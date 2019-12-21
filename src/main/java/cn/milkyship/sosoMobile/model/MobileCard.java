@@ -1,7 +1,5 @@
 package cn.milkyship.sosoMobile.model;
 
-import java.text.DecimalFormat;
-
 /**
  * <H2>文件名称: MobileCard.java </H2>
  * <p>描述: [电话卡类，用于存放被实例化的用户电话卡信息] </p>
@@ -42,27 +40,8 @@ public class MobileCard {
 	private int realSMSCount = 0;
 	private int realFlow = 0;
 	
-	/**
-	 * MobileCard
-	 * [MobileCard类无参构造函数]
-	 *
-	 * @author 徐云凯
-	 */
-	
 	public MobileCard() {
 	}
-	
-	/**
-	 * MobileCard
-	 * [MobileCard类有参构造函数]
-	 *
-	 * @param cardNumber:卡号，String
-	 * @param userName:用户名，String
-	 * @param password:密码，String
-	 * @param serPackage:卡使用的套餐名称，ServicePackage
-	 * @param money:预存金额，double
-	 * @author 徐云凯
-	 */
 	
 	public MobileCard(String cardNumber, String userName, String password, String serPackage, double money) {
 		this.cardNumber = cardNumber;

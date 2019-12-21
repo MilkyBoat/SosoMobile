@@ -21,18 +21,6 @@ public class ServicePackage {
 	public ServicePackage() {
 	}
 	
-	/***
-	 * Title: ServicePackage
-	 * Description: [带参构造]
-	 * @param name:
-	 * @param price:
-	 * @param talkTime:
-	 * @param smsCount:
-	 * @param flow:
-	 * @author 徐云凯
-	 * Datetime:  2019/11/16 21:16
-	 */
-	
 	public ServicePackage(String name, double price, int talkTime, int smsCount, int flow) {
 		this.name = name;
 		this.price = price;

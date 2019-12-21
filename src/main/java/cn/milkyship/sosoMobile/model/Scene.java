@@ -25,15 +25,6 @@ public class Scene {
 	public int data;
 	public String description;
 	
-	/**
-	 * <H2> public Scene(String type, int data, String description) </H2>
-	 * 场景类的唯一构造函数
-	 *
-	 * @param type        场景类型，String
-	 * @param data        消费数额, int
-	 * @param description 场景描述， String.
-	 */
-	
 	public Scene(String type, int data, String description) {
 		this.type = type;
 		this.data = data;
