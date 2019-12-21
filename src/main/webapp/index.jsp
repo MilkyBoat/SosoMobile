@@ -59,8 +59,9 @@
 
 <div class="login">
 	<form id="login" class="form" action="card/mySosoMobile" method="post">
-		<label>用户名： </label><input name="number" type="number" min="13900000000" max="17822011172" step="1">
-		<label>密码：</label><input name="password" type="password">
+		<label for="number">用户名： </label><input id="number" name="number" type="number" min="13900000000"
+		                                        max="17822011172" step="1">
+		<label for="number">密码：</label><input id="password" name="password" type="password">
 		<input class="submit" type="submit" value="登录">
 		<output>${info}</output>
 		<input class="submit" type="submit" formaction="user/signUp" value="没有账号？去注册">

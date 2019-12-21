@@ -5,8 +5,8 @@
 <mapper namespace="cn.milkyship.sosoMobile.dao.CardDao">
 
 	<insert id="save" parameterType="MobileCard">
-		INSERT INTO user_info( cardNumber, userName, password, serPackage, money, realTalkTime, realSMSCount, realFlow)
-			VALUES (#{cardNumber}, #{userName}, #{password}, #{serPackage}, #{money}, 0, 0, 0)
+		INSERT INTO user_info( cardNumber, userName, password, serPackage, money, consumAmount, realTalkTime, realSMSCount, realFlow)
+			VALUES (#{cardNumber}, #{userName}, #{password}, #{serPackage}, #{money}, 0, 0, 0, 0)
     </insert>
 
 	<delete id="del" parameterType="String">
@@ -20,6 +20,7 @@
 				password = #{password},
 				serPackage = #{serPackage},
 				money = #{money},
+				consumAmount = #{consumAmount},
 				realTalkTime = #{realTalkTime},
 				realSMSCount = #{realSMSCount},
 				realFlow = #{realFlow}

@@ -156,7 +156,7 @@ public class userServiceImpl implements UserService {
 		
 		StringBuilder info = new StringBuilder();
 		info.append("注册成功！");
-		DecimalFormat formatData = new DecimalFormat("#.0");
+		DecimalFormat formatData = new DecimalFormat("#0.00");
 		info.append("卡号：").append(number).
 				append(" 用户名：").append(userName).
 				append(" 当前余额：").append(formatData.format(newCard.getMoney())).append("元。");
@@ -216,30 +216,32 @@ public class userServiceImpl implements UserService {
 	 */
 	private ConsumInfo call(int minCount, MobileCard card, ServicePackage servicePackage) {
 		
-		if (card.getRealTalkTime() + minCount >= servicePackage.getTalkTime()) {
-			int temp = 0;
-			if (card.getRealTalkTime() < servicePackage.getTalkTime()) {
+		int temp = 0;
+		if (card.getRealTalkTime() + minCount >= servicePackage.getTalkTime()) {    // 套餐有剩余，剩余足够本次消费
+			if (card.getRealTalkTime() < servicePackage.getTalkTime()) {    // 套餐有剩余，剩余不不够本次消费
 				temp += servicePackage.getTalkTime() - card.getRealTalkTime();
 				minCount -= servicePackage.getTalkTime() - card.getRealTalkTime();
-				card.setRealTalkTime(servicePackage.getTalkTime());
 			}
-			if (card.getMoney() >= minCount * 0.2) {
-				card.setRealTalkTime(card.getRealTalkTime() + minCount);
-				card.setMoney(card.getMoney() - minCount * 0.2);
+			// 以下按套餐外计费
+			if (card.getMoney() >= minCount * 0.2) {    // 余额充足
 				temp += minCount;
-				return new ConsumInfo(card.getCardNumber(), "通话", temp);
+				card.setRealTalkTime(card.getRealTalkTime() + temp);
+				card.setMoney(card.getMoney() - minCount * 0.2);
+				card.setConsumAmount(card.getConsumAmount() + minCount * 0.2);
 			}
-			else {
+			else {  //余额不足
 				temp += (int) Math.round(card.getMoney() / 0.2);
 				card.setRealTalkTime(card.getRealTalkTime() + temp);
-				card.setMoney(0);
-				return new ConsumInfo(card.getCardNumber(), "通话", temp);
+				card.setMoney(card.getMoney() - ((int) Math.round(card.getMoney() / 0.2)) * 0.2);
+				card.setConsumAmount(card.getConsumAmount() + ((int) Math.round(card.getMoney() / 0.2)) * 0.2);
 			}
 		}
 		else {
+			temp = minCount;
 			card.setRealTalkTime(card.getRealTalkTime() + minCount);
-			return new ConsumInfo(card.getCardNumber(), "通话", minCount);
 		}
+		cardDao.update(card);
+		return new ConsumInfo(card.getCardNumber(), "通话", temp);
 	}
 	
 	/**
@@ -254,30 +256,31 @@ public class userServiceImpl implements UserService {
 	
 	private ConsumInfo netPlay(int flow, MobileCard card, ServicePackage servicePackage) {
 		
+		int temp = 0;
 		if (card.getRealFlow() + flow >= servicePackage.getFlow()) {
-			int temp = 0;
 			if (card.getRealFlow() < servicePackage.getFlow()) {
 				temp += servicePackage.getFlow() - card.getRealFlow();
 				flow -= servicePackage.getFlow() - card.getRealFlow();
-				card.setRealFlow(servicePackage.getFlow());
 			}
 			if (card.getMoney() >= flow * 0.1) {
-				card.setRealFlow(card.getRealFlow() + flow);
-				card.setMoney((card.getMoney() - flow * 0.1));
 				temp += flow;
-				return new ConsumInfo(card.getCardNumber(), "上网", temp);
+				card.setRealFlow(card.getRealFlow() + temp);
+				card.setMoney((card.getMoney() - flow * 0.1));
+				card.setConsumAmount(card.getConsumAmount() + flow * 0.1);
 			}
 			else {
 				temp += (int) Math.round(card.getMoney() / 0.1);
 				card.setRealFlow(card.getRealFlow() + temp);
-				card.setMoney(0);
-				return new ConsumInfo(card.getCardNumber(), "上网", temp);
+				card.setMoney(card.getMoney() - ((int) Math.round(card.getMoney() / 0.1)) * 0.1);
+				card.setConsumAmount(card.getConsumAmount() + ((int) Math.round(card.getMoney() / 0.1)) * 0.1);
 			}
 		}
 		else {
+			temp = flow;
 			card.setRealFlow(card.getRealFlow() + flow);
-			return new ConsumInfo(card.getCardNumber(), "上网", flow);
 		}
+		cardDao.update(card);
+		return new ConsumInfo(card.getCardNumber(), "上网", temp);
 	}
 	
 	/**
@@ -292,29 +295,30 @@ public class userServiceImpl implements UserService {
 	
 	private ConsumInfo send(int count, MobileCard card, ServicePackage servicePackage) {
 		
+		int temp = 0;
 		if (card.getRealSMSCount() + count >= servicePackage.getSmsCount()) {
-			int temp = 0;
 			if (card.getRealSMSCount() < servicePackage.getSmsCount()) {
 				temp += servicePackage.getSmsCount() - card.getRealSMSCount();
 				count -= servicePackage.getSmsCount() - card.getRealSMSCount();
-				card.setRealSMSCount(servicePackage.getSmsCount());
 			}
 			if (card.getMoney() >= count * 0.1) {
-				card.setRealSMSCount(card.getRealSMSCount() + count);
-				card.setMoney(card.getMoney() - count * 0.1);
 				temp += count;
-				return new ConsumInfo(card.getCardNumber(), "短信", temp);
+				card.setRealSMSCount(card.getRealSMSCount() + temp);
+				card.setMoney(card.getMoney() - count * 0.1);
+				card.setConsumAmount(card.getConsumAmount() + count * 0.1);
 			}
 			else {
 				temp += (int) Math.round(card.getMoney() / 0.1);
 				card.setRealSMSCount(card.getRealSMSCount() + temp);
-				card.setMoney(0);
-				return new ConsumInfo(card.getCardNumber(), "短信", temp);
+				card.setMoney(card.getMoney() - ((int) Math.round(card.getMoney() / 0.1)) * 0.1);
+				card.setConsumAmount(card.getConsumAmount() + ((int) Math.round(card.getMoney() / 0.1)) * 0.1);
 			}
 		}
 		else {
+			temp = count;
 			card.setRealSMSCount(card.getRealSMSCount() + count);
-			return new ConsumInfo(card.getCardNumber(), "短信", count);
 		}
+		cardDao.update(card);
+		return new ConsumInfo(card.getCardNumber(), "短信", temp);
 	}
 }
